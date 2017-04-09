@@ -1,0 +1,89 @@
+<!-- 
+固定一个某些宽度，使用一个模式，加上少许的媒体查询方案
+使用flexbox解决方案
+使用百分比加媒体查询
+使用<body>rem + <html>font-size
+ -->
+
+ <!-- 
+字体不用rem，这个点最主要的问题是，使用rem字号，导致iphone5下字体过小，
+而6p下字体过大，视觉不满意。所以font-size值还是建议用px，使用方法例如：
+div {
+    width: 1rem;
+    height: 0.4rem;
+    font-size: 12px; // 默认写上dpr为1的fontSize
+}
+ 
+[data-dpr="2"] div {
+    font-size: 24px;
+}
+ 
+[data-dpr="3"] div {
+    font-size: 36px;
+}
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport">
+	<!-- <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1"> -->
+	<!-- <meta name="viewport"   content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+	<!-- 设备的物理分辨率/(devicePixelRatio * scale)，在scale为1的情况下，device-width = 设备的物理分辨率/devicePixelRatio 。 -->
+	<title>taobao</title>
+	<style>
+		.b{
+			float: left;
+		}
+		.aa{
+			clear: left;
+		}
+
+		/*字体不使用rem时，额外加media*/
+		@media screen and (max-width: 321px) {
+			.p{font-size: 15px;}
+		}
+		@media screen and (min-width: 321px) and (max-width: 400px) {
+			.p{font-size: 16px;}
+		}
+		@media screen and (min-width: 400px) {
+			.p{font-size: 18px;}
+		}
+
+		/* sass 全局 px to rem 时*/
+		@function rem($num){
+			@return ($num / 100) * 1rem;
+		}
+		body{
+			font-family: "Microsoft Yahei";
+			width: rem(750);
+		}
+	</style>
+</head>
+<body>
+	<p><img src="111.jpg" alt=""></p>
+	<img class="b" src="1.png" alt="">
+	<img class="b" src="2.png" alt="">
+	<img class="b" src="3.png" alt="">
+	<img class="b" src="4.png" alt="">
+	<img class="b" src="5.png" alt="">
+	<p class="aa">接下来我们以网易移动端为例，在iphone6plus下它将html根字体大</p>
+	<p class="aa">383939939</p>
+	<script>
+		window.onload = function(){
+			// 设置font-size，不设置scale
+			var deviceWidth = document.documentElement.clientWidth;
+			document.documentElement.style.fontSize = deviceWidth / 750 * 100 + 'px'; // 字体放大了100倍，假设dev是320，则1rem=320/750*100=42.6666px
+
+			// 设置font-size和scale
+			var scale = 1 / devicePixelRatio;
+			document.querySelector('meta[name="viewport"]').setAttribute('content','initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+
+			var deviceWidth = document.documentElement.clientWidth; //deviceWidth = 设计稿 ， 因为设置scale, deviceWidth是scale=1的值
+			document.documentElement.style.fontSize = deviceWidth / 10 + 'px'; // 字体放大了10倍，假设dev是750，则1rem=75px
+
+		}
+	</script>
+</body>
+</html>
