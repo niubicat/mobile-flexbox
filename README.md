@@ -11,3 +11,16 @@ http://blog.csdn.net/huang100qi/article/details/49886713
 
 http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html
 
+https://segmentfault.com/a/1190000004344753
+
+
+移动适配  背景图片的错位问题
+
+http://www.tuicool.com/articles/yumEzi
+
+http://linxz.github.io/blog/css%E5%B1%9E%E6%80%A7%E5%9F%BA%E7%A1%80/2015/09/talk-about-background-position-values.html
+
+https://segmentfault.com/a/1190000007121606
+
+http://www.tuicool.com/articles/umiEbq
+
